@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predikat Kelulusan SMK Bina Informatika</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #141E30, #243B55);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: #E44D26;
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #F7B733;
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        input[type="text"], input[type="number"], select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #E44D26;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #F16529;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predikat Kelulusan SMK Bina Informatika</h1>
+        <input type="text" id="nama" placeholder="Masukkan Nama Anda">
+        <select id="jurusan">
+            <option value="">Pilih Jurusan</option>
+            <option value="MM">MM</option>
+            <option value="RPL">RPL</option>
+            <option value="TKJ">TKJ</option>
+            <option value="OTKP">OTKP</option>
+            <option value="PKM">PKM</option>
+        </select>
+        <input type="number" id="nilai" placeholder="Masukkan Nilai Anda">
+        <button onclick="cekKelulusan()">Cek Kelulusan</button>
+        <div class="result" id="result"></div>
+        <div class="footer">Muhammad Rafli Albhukhori</div>
+    </div>
+
+    <script>
+        function cekKelulusan() {
+            const nama = document.getElementById('nama').value;
+            const jurusan = document.getElementById('jurusan').value;
+            const nilai = document.getElementById('nilai').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (nama === "" || jurusan === "" || nilai === "") {
+                resultDiv.innerHTML = "Semua bidang harus diisi.";
+                return;
+            }
+
+            if (nilai >= 80) {
+                resultDiv.innerHTML = `
+                    <p>Selamat ${nama}! Anda dinyatakan <strong>LULUS</strong>.</p>
+                    <p>Jurusan: ${jurusan}</p>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <p>Maaf ${nama}, Anda dinyatakan <strong>TIDAK LULUS</strong>.</p>
+                    <p>Jurusan: ${jurusan}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
